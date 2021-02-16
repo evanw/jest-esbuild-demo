@@ -1,0 +1,12 @@
+{
+  "scripts": {
+    "build:cjs": "./node_modules/.bin/esbuild --bundle ./cjs/__tests__/original.js --format=cjs --outfile=./cjs/__tests__/compiled.js",
+    "test:cjs": "npm run build:cjs; cd ./cjs; node ../node_modules/.bin/jest",
+    "build:esm": "./node_modules/.bin/esbuild --bundle ./esm/__tests__/original.js --format=esm --outfile=./esm/__tests__/compiled.js --external:@jest/globals",
+    "test:esm": "npm run build:esm; cd ./esm; node --experimental-vm-modules ../node_modules/.bin/jest"
+  },
+  "dependencies": {
+    "esbuild": "0.8.46",
+    "jest": "26.6.3"
+  }
+}
